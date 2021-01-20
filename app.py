@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-@app.route('/users/<user>')
+@app.route('/users/user', methods=['GET'])
 def respond():
     # Retrieve the name from url parameter
     name = request.args.get('user', None)
