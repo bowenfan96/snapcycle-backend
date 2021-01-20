@@ -3,7 +3,7 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-@app.route('/getmsg/', methods=['GET'])
+@app.route('/users/<user>')
 def respond():
     # Retrieve the name from url parameter
     name = request.args.get("name", None)
@@ -27,7 +27,7 @@ def respond():
     return jsonify(response)
 
 
-@app.route('/post/', methods=['POST'])
+@app.route('/api/post_some_data', methods=['POST'])
 def post_something():
     param = request.form.get('name')
     print(param)
