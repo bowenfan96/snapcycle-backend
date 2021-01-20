@@ -3,46 +3,28 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-@app.route('/users/user', methods=['GET'])
-def respond():
-    # Retrieve the name from url parameter
-    name = request.args.get('user', None)
-
-    # For debugging
-    print(f"got name {name}")
-
-    response = {}
-
-    # Check if user sent a name at all
-    if not name:
-        response["ERROR"] = "no name found, please send a name."
-    # Check if the user entered a number not a name
-    elif str(name).isdigit():
-        response["ERROR"] = "name can't be numeric."
-    # Now the user entered a valid name
-    else:
-        response["MESSAGE"] = f"Welcome {name} to our awesome platform!!"
-
-    # Return the response in json format
-    return jsonify(response)
+@app.route('/users/<user>')
+def hello_user(user):
+    """
+    this serves as a demo purpose
+    :param user:
+    :return: str
+    """
+    return "Hello %s!" % user
 
 
 @app.route('/api/post_some_data', methods=['POST'])
-def post_something():
-    param = request.form.get('name')
-    print(param)
-    # You can add the test cases you made in the previous function, but in our case here you are just testing the
-    # POST functionality
-    if param:
-        return jsonify({
-            "Message": f"CARBON FOOTPRINT",
-            # Add this option to distinct the POST request
-            "METHOD": "POST"
-        })
-    else:
-        return jsonify({
-            "ERROR": "no name found, please send a name."
-        })
+def get_text_prediction():
+    """
+    predicts requested text whether it is ham or spam
+    :return: json
+    """
+    json = request.get_json()
+    print(json)
+    if len(json['text']) == 0:
+        return jsonify({'error': 'invalid input'})
+
+    return jsonify({'you sent this': json['text']})
 
 
 @app.route('/')
