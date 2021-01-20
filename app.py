@@ -6,7 +6,7 @@ app = Flask(__name__)
 @app.route('/users/<user>')
 def respond():
     # Retrieve the name from url parameter
-    name = request.args.get("name", None)
+    name = request.args.get('user', None)
 
     # For debugging
     print(f"got name {name}")
