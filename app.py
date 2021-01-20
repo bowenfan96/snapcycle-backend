@@ -47,7 +47,7 @@ def post_something():
 
 @app.route('/')
 def index():
-    return "<h1> This is the snapcycle backend!</h1>"
+    return "This is the snapcycle backend!"
 
 
 if __name__ == '__main__':
