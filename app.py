@@ -3,14 +3,14 @@ from flask import Flask, request, jsonify
 app = Flask(__name__)
 
 
-@app.route('/users/<user>')
-def hello_user(user):
+@app.route('/<item>')
+def carbon_offset(item):
     """
     this serves as a demo purpose
-    :param user:
+    :param item:
     :return: str
     """
-    return "Hello %s!" % user
+    return "%s offsets over 9000 tons of carbon!" % item
 
 
 @app.route('/api/post_some_data', methods=['POST'])
@@ -29,7 +29,7 @@ def get_text_prediction():
 
 @app.route('/')
 def index():
-    return "This is the snapcycle backend!"
+    return "This is the snapcycle backend! Use the get method by typing the item name after the URL"
 
 
 if __name__ == '__main__':
