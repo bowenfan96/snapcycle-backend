@@ -29,7 +29,7 @@ def get_text_prediction():
 
 @app.route('/')
 def index():
-    return "This is the snapcycle backend! Use the get method by typing the item name after the URL"
+    return "Edited on GitHub only: This is the snapcycle backend! Use the get method by typing the item name after the URL"
 
 
 if __name__ == '__main__':
